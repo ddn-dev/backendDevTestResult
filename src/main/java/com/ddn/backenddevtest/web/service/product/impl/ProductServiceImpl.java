@@ -22,6 +22,7 @@ public class ProductServiceImpl implements ProductService {
 
   private RestTemplate restTemplate;
 
+  /** {@inheritDoc} */
   public List<ProductDTO> getSimilarProductsById(Long id) {
     restTemplate =
         new RestTemplateBuilder().errorHandler(new RestTemplateResponseErrorHandler()).build();
@@ -40,6 +41,12 @@ public class ProductServiceImpl implements ProductService {
     return productDTOList;
   }
 
+  /**
+   * Obtain a product by id
+   *
+   * @param id Product id
+   * @return Product {@code ProductDTO}
+   */
   private ProductDTO getProductById(Long id) {
     restTemplate =
         new RestTemplateBuilder().errorHandler(new RestTemplateResponseErrorHandler()).build();
@@ -47,6 +54,12 @@ public class ProductServiceImpl implements ProductService {
         MessageFormat.format(PRODUCT_URL, id.toString()), ProductDTO.class);
   }
 
+  /**
+   * Obtain a list of similar product ids of a given one by its id
+   *
+   * @param id Product id
+   * @return List of ids {@code List<Long>}
+   */
   private List<Long> getSimilarProductIdsById(Long id) {
     return Arrays.asList(
         Objects.requireNonNull(

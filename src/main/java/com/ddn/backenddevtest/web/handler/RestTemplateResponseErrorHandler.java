@@ -10,6 +10,9 @@ import org.springframework.web.client.ResponseErrorHandler;
 
 import java.io.IOException;
 
+/**
+ * Handle the possible error responses from rest template requests
+ */
 @Slf4j
 @Component
 public class RestTemplateResponseErrorHandler implements ResponseErrorHandler {
